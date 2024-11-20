@@ -1,0 +1,356 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <time.h>
+#include <unistd.h>  
+  int AXE,SWORD,ROD,man;
+
+struct aa{
+char move[20];
+};
+int cavvvelake(int,int,int);
+void inventory(int,int);
+void surrounding(int,int);
+int Door();
+void main()
+{
+  srand(time(0));
+  AXE=0;
+  SWORD=0;
+  ROD=0;
+man=0;
+  printf("(You are adviced to keep creating a map since this is a D&D game)\n");
+   printf("What is your name?\n");
+   char name[20];
+fgets(name,20,stdin);
+printf("What is your age?\n");
+   int age;
+scanf("%d",&age);
+printf("Welcome to this world Adventurer %sYour current quest is to find and eliminate the goblin in the cave. Good Luck!\n",name);
+int lamp,knife;
+lamp=1;
+knife=1;
+inventory(lamp,knife);
+printf("It is so dark in here...\n (Press F to light)\n");
+char light;
+scanf(" %c",&light);
+//include a for
+if(light == 'F'|| light == 'f')
+printf("Yes,now something is visible...\n");
+else
+printf("You can't see anything.\n");
+int cavelake,ncs;
+cavelake=1;
+ncs=1;
+surrounding(cavelake,ncs);
+printf("*To go anywhere Enter its name like Cave Lake in CL *\n");
+char thth[20];
+scanf("%s",thth);
+int cala=0;
+int nacrsp=0;
+if((strcmp(thth,"CL"))==0)
+{
+printf("CAVE LAKE\n");
+cala++;
+}
+else if((strcmp(thth,"NCS"))==0)
+{
+printf("Narrow Crawl Space\n");
+nacrsp++;
+}
+else
+ printf("Wrong input");
+ char mm[20];
+ if (cala == 1) {
+        // Example of calling the cavvvelake() function, assuming it returns a value
+         SWORD = cavvvelake(AXE, SWORD, ROD);
+        // Message prompting user to enter a location
+        printf(" *To go anywhere, enter its name like Cave Entrance (CE)\n");
+
+        // Read user input (location)
+        scanf(" %s", mm);  // Corrected to avoid using & with an array
+
+ char mm11[20];
+
+        // Compare input with predefined options
+        if (strcmp(mm, "CE") == 0) {
+            printf("Cave Entrance\n");
+            surrounding(cavelake,ncs);
+                    printf(" *To go anywhere, enter its name like Narrow Crawl Space as NCS\n");
+ char mm11[20];
+         scanf(" %s", mm);  // Corrected to avoid using & with an array
+        if (strcmp(mm, "NCS") == 0) {
+          goto narrowcr;
+        }
+else if((strcmp(thth,"CL"))==0)
+{
+printf("CAVE LAKE");
+SWORD=cavvvelake(AXE,SWORD,ROD);
+}
+else
+ printf("Wrong input");
+
+        } else if (strcmp(mm, "NCS") == 0) {
+            printf("Narrow Crawl Space\n");
+            nacrsp++;  // Increment narrow crawl space counter
+            goto narrowcr;
+        } else {
+            printf("Unknown location: %s\n", mm);  // Handle invalid input
+        }
+    }
+    else if(nacrsp==1)
+    {
+      narrowcr:
+     char mmm[20];
+      printf("(Press C to crawl forward)");
+      scanf(" %s", mmm); 
+        if (strcmp(mmm, "C") == 0 || strcmp(mmm, "c") == 0) {
+          if(man==0)
+          {
+      printf("You hear a man screming in agony!!! You hurry up...\n");
+      sleep(2);
+      printf("You see a man in badhy hurt and bleeding\n(Press A to approach) ");
+            sleep(1);
+
+      char mmm1[20];
+      scanf(" %s", mmm1); 
+        if (strcmp(mmm1, "A") == 0|| strcmp(mmm1, "A") == 0) {
+ printf("What happened to you?\n");
+       sleep(2);
+       printf("THE GOBLIN..IT'S HERE \n");
+       
+       
+      sleep(2);
+     printf("I came with friends as a joke..\n(He screams with pain and starts to cough blood)");
+      sleep(2);
+      
+
+      printf("Let me get you to a Doctor\n");
+            sleep(2);
+printf("No help the others it's too late..\n(His breathing shows down..You move forward)\n");
+
+
+        }
+        
+      else
+      printf("Wrong input");
+          }
+          printf("You see A Large Door\n(Press A to approach)\n");
+            char mmm31[20];
+      scanf(" %s", mmm31); 
+        if (strcmp(mmm31, "A") == 0|| strcmp(mmm31, "A") == 0) {
+        int k;
+          k= Door();
+          if(k==0)
+          printf("Thank you for playing!");
+          else
+          {
+          printf("You have passed the test!\nYou recieved...");
+          printf("Fishing Rod!");
+          ROD++;
+        
+          printf(" *To go anywhere, enter its name like Cave Lake as CL\n");
+char mmM2[20];
+        scanf(" %s", mmM2);  // Corrected to avoid using & with an array
+        if (strcmp(mmM2, "CL") == 0) {
+            printf("CAVE LAKE\n");
+            printf("%d %d %d",AXE,SWORD,ROD);
+            
+            
+            cavvvelake(AXE,SWORD,ROD);
+
+        }     
+ 
+        else if(strcmp(mm, "NCS") == 0) {
+            printf("NARROW CAVE LAKE\n");
+            printf(" *To go anywhere, enter its name like Cave Lake as CL\n");
+char mmM3[20];
+        scanf(" %s", mmM3);
+         if (strcmp(mmM3, "CL") == 0) {
+            printf("CAVE LAKE\n");
+            surrounding(cavelake,ncs);
+            cavvvelake(AXE,SWORD,ROD);
+        } 
+      } 
+          }
+        }
+          }
+      else
+      {
+      printf("Wrong input Do you wish to go back?If yes type CE or CL");
+      char mmmm[20];
+       scanf(" %s", mmmm);  // Corrected to avoid using & with an array
+
+        // Compare input with predefined options
+        if (strcmp(mmmm, "CE") == 0) {
+            printf("Cave Entrance\n");
+            surrounding(cavelake,ncs);
+
+        }
+         else if (strcmp(mmmm, "CL") == 0) {
+            printf("CAVE LAKE\n");
+            SWORD=cavvvelake(AXE,SWORD,ROD);
+      }
+      }
+      
+        }
+}
+    
+
+
+      
+        
+
+// if(cala==1)
+// {
+//   SWORD=cavvvelake(AXE,SWORD,ROD);
+//   printf("*To go anywhere Enter its name like Cave Entrance in CE*\n");
+//   // struct aa B;
+//   // scanf(" %s",&B.move);
+//   char mm[20];
+//   scanf(" %s",&mm);
+// if((strcmp(mm,"CE"))==0)
+// {
+// printf("Cave Entrance");
+
+// }
+// else if((strcmp(mm,"NCS"))==0)
+// {
+// printf("Narrow Crawl Space");
+// nacrsp++;
+// }
+// }
+
+
+void inventory(int l , int k )
+{
+  if(l==1)
+  printf("You have lamp,");
+  if(k==1)
+  printf("knife\n ");
+}
+void surrounding(int cc,int nc)
+{
+  printf("You see ");
+  if(cc==1)
+  printf("Cave Lake ");
+  if(nc==1)
+  printf("Narrow crawl space\n");
+}
+  
+int cavvvelake(int a, int b, int c) {
+    if (a == 0 && c == 0 && b==0) 
+    {
+        printf("You see Axe Something glimmering in the water far away..\n");
+        printf("(Press A to get Axe)\n");
+        
+        char axe;
+        scanf(" %c", &axe);  // Fix: pass address of axe to scanf
+        
+        if (axe == 'a' || axe == 'A') {  // Fix: compare the value properly
+        {
+            printf("Axe added to inventory\n");
+            AXE++;
+        }
+            printf("You see Something glimmering in the water far away..\n");
+            printf("(Press A to approach)\n");
+            
+            char lkmdd;
+            scanf(" %c", &lkmdd);  // Fix: scan a single character
+            
+            if (lkmdd == 'a' || lkmdd == 'A') {
+                if (c == 0) {
+                    printf("You need a Fishing Rod\n");
+                    return 0;  // Returning 0 means no sword acquired
+                } else {
+                    printf("You acquired a Sword\n");
+                    return 1;  // Returning 1 means sword acquired
+                }
+            }
+        }
+        else
+        printf("Wrong input");
+        
+        }
+     else if (a == 1 && c == 0&&b==0) {
+        printf("You see Something glimmering in the water far away..\n");
+        printf("(Press A to approach)\n");
+
+        char lkmdd[3];  // Fix: Declare an array to read the input
+        scanf("%s", lkmdd);  // Fix: scan a string
+
+        if (strcmp(lkmdd, "a") == 0 || strcmp(lkmdd, "A") == 0) {  // Fix: string comparison with strcmp
+            if (c == 0) {
+                printf("You need a Fishing Rod\n");
+                return 0;  // Returning 0 means no sword acquired
+            } 
+            }
+     }
+            else if(a==1&&b==0&&c==1){
+                printf("You acquired a Sword\n");
+                
+                return 1;  // Returning 1 means sword acquired
+            }
+       
+     else {
+        printf("You see water!\n");
+        return 1;  // Default return
+    }
+}
+int Door()
+{
+printf("(You hear a thunderous voice)\n");
+sleep(1);
+printf("To enter you must answer my questions\n");
+sleep(2);
+printf("Choose your intrest from which I can identify you \nAstronomy\nScience\n");
+
+sleep(2);
+
+int a;
+printf("(You understant that this is a safety mechanism by the Goblin to go to his hiding spot.");
+sleep(2);
+printf(" You now choose among Astrnomy and Science using 1 or 2 \n ");
+sleep(1);
+printf("(Be mindful when choosing and answering the question following the fact that game is based on 15th Century)");
+
+scanf("%d",&a);
+if(a==1)
+{
+printf("What is the Centre of the Universe 1-Sun 2-Earth 3-No cetnre \n");
+int b;
+scanf("%d",&b);
+if(b==2){
+printf("You shall pass");
+return 1;
+}
+else
+printf("The answer is wrong \n GAME OVER \n Restart from last checkpoint(Y-1/N-2)");
+int c;
+scanf("%d",&c);
+if(c==1)
+return Door();
+else
+return 0;
+}
+else 
+printf("How many parts does a nucleus consist of 1 - 2 or 2 - 3 \n");
+int d;
+scanf("%d",&d);
+if(d==2){
+printf("You shall pass");
+return 1;
+}
+else
+printf("The answer is wrong \n GAME OVER \n Restart from last checkpoint(Y-1/N-2)");
+int c;
+scanf("%d",&c);
+if(c==1)
+return Door();
+else
+return 0;
+}
+
+
+
+  
